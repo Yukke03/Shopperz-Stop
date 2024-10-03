@@ -1,0 +1,439 @@
+/* Main Navigation Styles */
+.main__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #001f3f; /* Dark blue background */
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    transition: background-color 0.3s; /* Add transition for background change */
+}
+
+.main__nav:hover {
+    background-color: #003366; /* Change color on hover */
+}
+
+.main__nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+    transition: color 0.3s; /* Smooth transition for link color */
+}
+
+.main__nav a:hover {
+    color: #1abc9c; /* Change link color on hover */
+}
+
+.main__nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+    display: flex;
+}
+
+.main__nav li {
+    margin-right: 20px;
+    position: relative;
+}
+
+.product__submenu {
+    display: none; /* Hidden by default */
+    position: absolute; /* Ensure it's positioned correctly */
+    background: rgb(24, 15, 148); /* Background color */
+    border: 1px solid #ccc; /* Optional border */
+    z-index: 100; /* Ensure it is above other elements */
+    width: 150px; /* Set a width for the submenu */
+    padding: 10px 0; /* Add top and bottom padding for spacing */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.product:hover .product__submenu {
+    display: block; /* Show on hover */
+}
+
+.product__submenu a {
+    display: block; /* Make the links block elements for easier clicking */
+    padding: 10px 15px; /* Add padding to the links */
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Increase font size */
+}
+
+.product__submenu a:hover {
+    background: rgba(255, 255, 255, 0.2); /* Add a hover effect */
+    border-radius: 5px; /* Match the submenu's border radius */
+}
+
+.main__nav .product:hover .product__submenu {
+    display: block;
+}
+
+.search-container {
+    display: flex;
+}
+
+.search-bar {
+    padding: 10px; /* Increased padding */
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    transition: border-color 0.3s; /* Smooth border transition */
+}
+
+.search-bar:focus {
+    border-color: #1abc9c; /* Change border color on focus */
+}
+
+.search-button {
+    padding: 10px 15px; /* Adjust padding */
+    background-color: #1abc9c;
+    border: none;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.search-button:hover {
+    background-color: #16a085; /* Change button color on hover */
+}
+
+.icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icons .icon__item {
+    color: #ffffff;
+    font-size: 24px; /* Increased icon size */
+    cursor: pointer;
+    transition: transform 0.3s; /* Scale animation */
+}
+
+.icons .icon__item:hover {
+    transform: scale(1.2); /* Scale up on hover */
+}
+
+/* Logo Style */
+.regular__logo img {
+    width: 100px; /* Set a specific width for the logo */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Product Container Styles */
+.product-container {
+    display: grid; /* Use grid for better control */
+    grid-template-columns: repeat(5, 1fr); /* Fixed 5 columns for desktop */
+    gap: 20px; /* Space between product items */
+    margin: 20px; /* Outer margin */
+}
+
+/* Product Item Styles */
+.product-item {
+    background-color: #fff; /* White background for product items */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden; /* Ensures content fits inside */
+    transition: transform 0.3s, box-shadow 0.3s; /* Animation on hover */
+}
+
+.product-item:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Product Image Styles */
+.product-image img {
+    width: 100%; /* Full width */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Ensures the image covers the area */
+    transition: transform 0.3s; /* Animation for image hover */
+}
+
+.product-image img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Product Info Styles */
+.product-info {
+    padding: 10px; /* Inner padding */
+    text-align: left; /* Align text to left */
+}
+
+.product-title {
+    font-size: 16px; /* Font size for title */
+    font-weight: bold; /* Bold title */
+    margin: 0; /* Remove default margin */
+}
+
+.product-description {
+    font-size: 14px; /* Smaller font for description */
+    color: #555; /* Dark gray color for description */
+    margin: 5px 0; /* Margin around description */
+}
+
+.product-price {
+    font-size: 18px; /* Larger font for price */
+    color: #B12704; /* Amazon-like red for price */
+    font-weight: bold; /* Bold price */
+    margin: 10px 0; /* Margin around price */
+}
+
+/* Button Styles */
+.add-to-cart {
+    background-color: #FFA41C; /* Orange background for button */
+    border: none; /* No border */
+    color: white; /* White text */
+    padding: 10px; /* Padding */
+    cursor: pointer; /* Pointer cursor */
+    border-radius: 5px; /* Rounded corners */
+    width: 100%; /* Full width button */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.add-to-cart:hover {
+    background-color: #FF8C00; /* Darker orange on hover */
+}
+
+#product-container {
+    transition: opacity 0.3s ease; /* Transition for the fade effect */
+    opacity: 1; /* Start fully visible */
+}
+
+
+/* Pagination Controls */
+.pagination-controls {
+    display: flex;
+    justify-content: center; /* Center the pagination controls */
+    margin: 20px 0; /* Space above and below pagination */
+}
+
+.pagination-controls button {
+    background-color: #081310; /* Button color */
+    border: none;
+    color: white; /* Text color */
+    padding: 10px 15px; /* Padding for button */
+    margin: 0 5px; /* Space between buttons */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth color transition */
+}
+
+.pagination-controls button:hover {
+    background-color: #16a085; /* Darken button on hover */
+}
+
+.pagination-controls button:disabled {
+    background-color: #ccc; /* Gray color for disabled button */
+    cursor: not-allowed; /* Not allowed cursor */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .product-container {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for small screens */
+    }
+
+    .product-image img {
+        height: 180px; /* Smaller image height */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for extra small screens */
+    }
+
+    .product-image img {
+        height: 150px; /* Smaller image height */
+    }
+}
+
+/* Cart Styles */
+#cart {
+    display: none; /* Initially hidden */
+}
+
+.cart-hidden {
+    display: none;
+}
+
+.cart-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cart-items li {
+    list-style-type: none;
+    margin: 5px 0;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #011222; /* Dark blue background */
+    color: white;
+    padding: 20px; /* Reduced padding for a lower height */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items */
+    position: relative; /* Ensures footer can be placed at the bottom */
+    bottom: 0; /* Stays at the bottom */
+    width: 100%; /* Full width footer */
+}
+
+/* Flex Container for Rows */
+.footer .row {
+    display: flex; /* Flexbox for row layout */
+    justify-content: space-between; /* Space out columns evenly */
+    width: 100%; /* Full width for row */
+    margin-bottom: 10px; /* Space between rows */
+}
+
+/* Column Styles */
+.footer .col {
+    flex: 1; /* Allow columns to take equal space */
+    margin: 0 15px; /* Margin between columns */
+    text-align: left; /* Align text to the left */
+}
+
+/* Logo Styles */
+.logo {
+    max-width: 120px; /* Set a reasonable size for the logo */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Account Links */
+.account-links {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack links vertically */
+    padding: 0; /* Remove default padding */
+    margin: 10px 0; /* Space above and below the list */
+    list-style: none; /* Remove bullet points */
+}
+
+.account-links a {
+    color: white; /* White text color for links */
+    text-decoration: none; /* Remove underline */
+    margin: 5px 0; /* Space between each link */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.account-links a:hover {
+    color: #1abc9c; /* Change color on hover */
+}
+
+/* Adjust Logo Size for Better Fit */
+.app-logo {
+    width: 100px; /* Set a specific width */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between logos */
+}
+
+/* Copyright */
+.copyright {
+    text-align: center;
+    margin-top: 10px; /* Smaller margin for less height */
+    font-size: 14px; /* Smaller font size for copyright */
+}
+
+/* Social Media Icons */
+.follow {
+    margin-top: 0px;
+    display: flex; /* Flexbox for social icons */
+    justify-content: left; /* Center align icons */
+}
+
+.follow i {
+    font-size: 25px; /* Increased icon size */
+    margin: 15px; /* Space between icons */
+    color: white; /* Icon color */
+    transition: color 0.3s; /* Smooth color change */
+}
+
+.follow i:hover {
+    color: #1abc9c; /* Change color on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: center; /* Center align items */
+    }
+
+    .footer .row {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center; /* Center align columns */
+    }
+
+    .col {
+        margin: 10px 0; /* Vertical spacing for small screens */
+        text-align: center; /* Center text for small screens */
+    }
+
+    .account-links a {
+        margin: 5px 0; /* Space between links */
+    }
+
+    .product-container div {
+        width: 100%; /* Full width on small screens */
+        margin: 5px 0; /* Reduced margin for smaller screens */
+    }
+}
+
+/* Ensure Footer Stays at the Bottom of the Page */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Minimum height of full viewport */
+}
+
+.content {
+    flex: 1; /* Takes available space, pushing footer to bottom */
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

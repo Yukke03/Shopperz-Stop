@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home - Add and View Products</title>
+    <link rel="stylesheet" href="homestyle.css">
+</head>
+<body>
+    <header>
+        <h1>Shopperz Stop. Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#addProduct">Add Product</a></li>
+                <li><a href="#viewProducts">View Products</a></li>
+                <li><a href="#editProduct">Edit Products</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="addProduct">
+            <h2>Add Product</h2>
+            <form id="addProductForm">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" required><br><br>
+
+                <label for="productPrice">Product Price:</label>
+                <input type="number" id="productPrice" required step="0.01"><br><br>
+
+                <label for="productDescription">Product Description:</label>
+                <textarea id="productDescription" required></textarea><br><br>
+
+                <label for="productQuantity">Product Quantity:</label>
+                <input type="number" id="productQuantity" required><br><br>
+
+                <label for="productCategory">Product Category:</label>
+                <select id="productCategory" required>
+                    <option value="Clothing">Clothing (ID: 001)</option>
+                    <option value="Jewellery">Jewellery (ID: 002)</option>
+                    <option value="Electronics">Electronics (ID: 003)</option>
+                </select><br><br>
+
+                <label for="productImage">Product Image:</label>
+                <input type="file" id="productImage" accept="image/*" required><br><br>
+
+                <button type="submit">Add Product</button>
+            </form>
+        </section>
+
+        <section id="viewProducts">
+            <h2>View Products</h2>
+            <label for="categoryFilter">View by Category:</label>
+            <select id="categoryFilter">
+                <option value="">All</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Jewellery">Jewellery</option>
+                <option value="Electronics">Electronics</option>
+            </select>
+
+            <label for="productSearch">Search Products:</label>
+            <input type="text" id="productSearch" placeholder="Search by name...">
+
+            <div id="productList" class="product-container">
+                <!-- Example of a product box -->
+                <div class="product">
+                    <h3>Product Name</h3>
+                    <p>Price: $XX.XX</p>
+                    <p>Description: Short product description here.</p>
+                    <p>Quantity: X</p>
+                    <button id="deleteButton">Delete</button>
+                    
+                </div>
+                <button>Edit</button>
+                <button id="deleteButton">Delete</button>
+                <!-- Repeat above div for more products -->
+            </div>
+			<div id="pagination"></div>
+
+        </section>
+
+        <section id="editProduct">
+            <h2>Edit Product</h2>
+            <form id="editProductForm">
+                <input type="hidden" id="editProductId">
+                <label for="editProductName">Product Name:</label>
+                <input type="text" id="editProductName" required><br><br>
+
+                <label for="editProductPrice">Product Price:</label>
+                <input type="number" id="editProductPrice" required step="0.01"><br><br>
+
+                <label for="editProductDescription">Product Description:</label>
+                <textarea id="editProductDescription" required></textarea><br><br>
+
+                <label for="editProductQuantity">Product Quantity:</label>
+                <input type="number" id="editProductQuantity" required><br><br>
+
+                <label for="editProductCategory">Product Category:</label>
+                <select id="editProductCategory" required>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Jewellery">Jewellery</option>
+                    <option value="Electronics">Electronics</option>
+                </select><br><br>
+
+                <label for="editProductImage">Product Image:</label>
+                <input type="file" id="editProductImage" accept="image/*"><br><br>
+
+                <button type="submit">Update Product</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Shopperz Stop. All rights reserved.</p>
+    </footer>
+
+    <script src="Homepage.js"></script>
+</body>
+</html>

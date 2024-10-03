@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="customerhomestyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <title>Shopperz Stop - Your Ultimate eCommerce Store</title>
+    <style>
+        .banner {
+    width: auto; /* Full width */
+    height: 200px; /* Adjust height as needed */
+    background-image: url('Images/black-friday-elements-assortment.jpg'); /* Replace with your image URL */
+    background-size: cover; /* Cover the entire banner */
+    background-position: center; /* Center the background image */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically center content */
+    padding: 0 20px; /* Horizontal padding for spacing */
+    color: white; /* Text color */
+    font-size: 24px; /* Font size */
+    font-weight: bold; /* Font weight */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
+    position: relative; /* Position relative for pseudo-elements */
+}
+
+.banner span {
+    position: absolute; /* Position relative for text */
+    z-index: 1; /* Layer above the overlay */
+    display: block; /* Makes the span a block element */
+    text-align: left; /* Align text to the left */
+}
+
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <div class="main__nav">
+        <a href="Customerhomepage.html" class="regular__logo">
+            <img src="Images/shopperz-stop-high-resolution-logo-white-transparent.png" alt="Shopperz Stop" />
+        </a>
+        <ul>
+            <li class="product">
+                <a href="#">Categories <i class="fa fa-angle-down"></i></a>
+                <div class="product__submenu">
+                    <a href="#" onclick="getCategory('clothing')">Clothing</a>
+                    <a href="#" onclick="getCategory('jewellery')">Jewellery</a>
+                    <a href="#" onclick="getCategory('electronics')">Electronics</a>
+                </div>
+                <div id="product-list"></div>
+            </li>
+            <li><a href="#">Customer Reviews</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="orderhistory.html">History</a></li> <!-- Added History button -->
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search products..." id="search-bar" />
+            <button class="search-button" onclick="searchProducts()">Search</button>
+        </div>
+        <div class="icons">
+            <i class="fa fa-user icon__item" id="profile-btn" onclick="fetchUserDetails()"></i>
+            <i class="fa fa-shopping-cart icon__item" id="cart-btn" onclick="toggleCart()"></i>
+            <i class="fa fa-sign-out icon__item" id="signout-btn" onclick="signOut()"></i>
+        </div>
+    </div>
+
+    <!-- Banner Section -->
+    <div class="banner">
+        <p>Welcome to Shopperz Stop! Discover our latest Deals.<br> <br> Use SAVE10, Get a 10% Discount</p>
+    </div>
+
+    <!-- Modal for displaying profile details -->
+    <!-- Modal HTML Structure -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Profile Details</h2>
+            <p><strong>First Name:</strong> <span id="loggedUserFName"></span></p>
+            <p><strong>Last Name:</strong> <span id="loggedUserLName"></span></p>
+            <p><strong>Email:</strong> <span id="loggedUserEmail"></span></p>
+        </div>
+    </div>
+
+    <!-- Container for displaying products -->
+    <div id="product-container" class="product-container">
+        <!-- Products will be inserted here dynamically -->
+    </div>
+    <div id="pagination-controls" class="pagination-controls">
+        <button id="prev-page" onclick="changePage(-1)">Previous</button>
+        <span id="page-info"></span>
+        <button id="next-page" onclick="changePage(1)">Next</button>
+    </div>
+    
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="row">
+            <div class="col">
+                <img class="logo" src="Images/shopperz-stop-high-resolution-logo-white-transparent.png" alt="Logo" />
+                <h4>Contact</h4>
+                <p><strong>Address:</strong> 1234 Elm Street, Springfield, IL 62704</p>
+                <p><strong>Phone:</strong> 555-123-4567</p>
+                <p><strong>Hours:</strong> Mon-Sat: 10:00 AM - 6:00 PM</p>
+                <div class="follow">
+                    <h4>Follow Us</h4>
+                    <i class="fa fa-facebook"></i>
+                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa-instagram"></i>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>My Account</h4>
+                <div class="account-links">
+                    <a href="#">Sign In</a>
+                    <a href="#">View Cart</a>
+                    <a href="#">Wishlist</a>
+                    <a href="#">Track My Order</a>
+                    <a href="#">Help</a>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>Install App</h4>
+                <p>From Google Play or the App Store</p>
+                <div class="row">
+                    <img src="Images/App-Store-Logo.png" alt="App Store" class="app-logo" />
+                </div>
+            </div>
+        </div>
+
+        <p class="copyright">© 2024 Shopperz Stop. All Rights Reserved.</p>
+    </footer>
+
+    <script src="Customerhome.js"></script>
+</body>
+</html>

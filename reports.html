@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Shopperz Stop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 2em;
+            text-align: center;
+        }
+
+        button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #005599;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shopperz Stop. Admin Reports</h1>
+        <nav>
+            <ul>
+                <li><a href="homepage.html">Dashboard</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Generate Reports</h2>
+        
+        <!-- Inventory Report -->
+        <button onclick="generateInventoryReport('all')">Download All Inventory Report</button>
+        <button onclick="generateInventoryReport('category')">Download Category-wise Inventory Report</button>
+        <button onclick="generateInventoryReport('high')">Download High Stock Report (>100)</button>
+        <button onclick="generateInventoryReport('low')">Download Low Stock Report (<15)</button>
+        
+        <!-- Sales Report -->
+        <button onclick="generateOrdersReport()">Download Sales Report</button>
+        <button onclick="generateTop10CashPurchases()">Download Top 10 Cash Purchases</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Shopperz Stop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const API_KEY = 'AIzaSyA0j1H8_v-ZaVa25wZkDuOf_oEgz3xhb_o';  // Replace with your Firestore REST API Key
+        const PROJECT_ID = 'e-commerce-website-bf09a';  // Replace with your Firestore Project ID
+        const PRODUCTS_COLLECTION = 'products';
+        const ORDERS_COLLECTION = 'orders';
+
+        // Fetch data from Firestore using REST API
+        async function fetchFirestoreData(collection) {
+            const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/${collection}?key=${API_KEY}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            return data.documents || [];
+        }
+
+        // Convert JSON data to CSV format
+        function jsonToCSV(jsonData, fields) {
+            const csvRows = [];
+            const headers = fields.join(',');
+            csvRows.push(headers);
+
+            for (const item of jsonData) {
+                const row = fields.map(field => {
+                    const value = item.fields[field]?.stringValue || item.fields[field]?.integerValue || item.fields[field]?.doubleValue || '';
+                    return `"${value}"`;
+                });
+                csvRows.push(row.join(','));
+            }
+
+            return csvRows.join('\n');
+        }
+
+        // Download CSV file
+        function downloadCSV(csvData, filename) {
+            const blob = new Blob([csvData], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', filename);
+            a.click();
+        }
+
+        // Generate Inventory (Products) Report
+        async function generateInventoryReport(type) {
+            const products = await fetchFirestoreData(PRODUCTS_COLLECTION);
+            let filteredProducts = products;
+
+            if (type === 'category') {
+                // Category-wise filtering (e.g., Electronics, Clothing)
+                filteredProducts = products.filter(item => item.fields.category.stringValue === 'Electronics'); // Customize category logic
+            } else if (type === 'high') {
+                // High stock (quantity > 100)
+                filteredProducts = products.filter(item => parseInt(item.fields.quantity.integerValue) > 100);
+            } else if (type === 'low') {
+                // Low stock (quantity < 15)
+                filteredProducts = products.filter(item => parseInt(item.fields.quantity.integerValue) < 15);
+            }
+
+            const fields = ['name', 'price', 'description', 'quantity', 'category'];
+            const csvData = jsonToCSV(filteredProducts, fields);
+            downloadCSV(csvData, `inventory_report_${type}.csv`);
+        }
+
+        // Generate Orders (Sales) Report
+        async function generateOrdersReport() {
+            const orders = await fetchFirestoreData(ORDERS_COLLECTION);
+            const fields = ['orderDate', 'totalAmount', 'paymentMethod', 'shippingAddress', 'status'];
+            const csvData = jsonToCSV(orders, fields);
+            downloadCSV(csvData, 'orders_report.csv');
+        }
+
+        // Generate Top 10 Cash Purchases Report
+        async function generateTop10CashPurchases() {
+            const orders = await fetchFirestoreData(ORDERS_COLLECTION);
+            const cashOrders = orders
+                .filter(order => order.fields.paymentMethod.stringValue === 'cash')
+                .sort((a, b) => parseFloat(b.fields.totalAmount.doubleValue) - parseFloat(a.fields.totalAmount.doubleValue))
+                .slice(0, 10);
+
+            const fields = ['orderDate', 'totalAmount', 'paymentMethod', 'shippingAddress', 'status'];
+            const csvData = jsonToCSV(cashOrders, fields);
+            downloadCSV(csvData, 'top_10_cash_purchases.csv');
+        }
+    </script>
+</body>
+</html>

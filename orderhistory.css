@@ -1,0 +1,186 @@
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease-in-out;
+}
+
+header {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 3px;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    padding: 2em;
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    animation: slideInFromLeft 0.8s ease-in-out;
+}
+
+a{
+    text-align: justify;
+    color: white;
+    font-size: large;
+}
+.orders-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Fixed to 4 columns */
+    justify-content: center;
+    gap:10px;
+    width:100%;
+}
+
+.order-card {
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin: 15px;
+    width: 480px;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: bounceIn 0.5s ease-in-out;
+}
+
+.order-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.order-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.order-card img:hover {
+    transform: scale(1.05);
+}
+
+.order-details {
+    margin-top: 15px;
+}
+
+.order-details h3 {
+    color: #005599;
+    margin: 0;
+    padding: 0;
+    font-size: 1.6em;
+    animation: slideInFromRight 0.7s ease-in-out;
+}
+
+.order-details p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.order-details span {
+    font-weight: bold;
+    color: #003366;
+}
+
+table {
+    width: 30%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+table th {
+    background-color: #003366;
+    color: white;
+    font-size: 1.1em;
+}
+
+table td:hover {
+    background-color: #f0f8ff;
+}
+
+footer {
+    background-color: #353535;
+    color: white;
+    text-align: center;
+    padding: 2px;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    z-index: 100;
+    animation: fadeInUp 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css"> <!-- Link to the CSS file -->
+    <script src="checkout.js" defer></script> <!-- Link to the JS file -->
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <h1>Shopperz Stop.</h1>
+            <nav>
+                <ul>
+                    <li><a href="Customerhomepage.html">Home</a></li>
+                    <li><a href="Customerhomepage.html">Products</a></li>
+                    <li><a href="Addtocart.html">Cart</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Checkout</h1>
+
+        <!-- User Information Form -->
+        <form id="userInfoForm" class="user-info-form">
+            <h2>User Information</h2>
+            <label for="address">Shipping Address:</label>
+            <textarea id="address" required placeholder="Enter your shipping address..."></textarea>
+        </form>
+
+        <!-- Delivery Options -->
+        <h2>Delivery Options</h2>
+        <div class="delivery-options">
+            <label>
+                <input type="radio" name="delivery" value="standard" checked>
+                Standard Delivery - $5.00 (3-5 days)
+            </label>
+            <label>
+                <input type="radio" name="delivery" value="express">
+                Express Delivery - $10.00 (1-2 days)
+            </label>
+            <label>
+                <input type="radio" name="delivery" value="same-day">
+                Same Day Delivery - $20.00 (within 24 hours)
+            </label>
+        </div>
+
+        <!-- Checkout Items Table -->
+        <h2>Your Cart Items</h2>
+        <table id="checkout-items">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="checkout-items-body">
+                <!-- Items will be populated here -->
+            </tbody>
+        </table>
+
+        <p>Total Amount: $<span id="total-price">0.00</span></p>
+
+        <!-- Apply Voucher Section -->
+        <div class="voucher-section">
+            <label for="voucher-code">Apply Voucher:</label>
+            <input type="text" id="voucher-code" placeholder="Enter your voucher code...">
+            <button id="apply-voucher">Apply</button>
+            <p id="voucher-message"></p>
+        </div>
+
+        <!-- Payment Options -->
+        <h2>Payment Options</h2>
+        <div class="payment-options">
+            <label>
+                <input type="radio" name="payment" value="cod" checked>
+                Cash on Delivery
+            </label>
+            <label>
+                <input type="radio" name="payment" value="credit-card">
+                Credit Card
+            </label>
+            <label>
+                <input type="radio" name="payment" value="paypal">
+                PayPal
+            </label>
+        </div>
+
+        <button id="confirm-purchase">Confirm Purchase</button>
+        <button id="back-to-cart">Back to Cart</button>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Shopperz Stop. All Rights Reserved.</p>
+            <ul>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Terms of Service</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

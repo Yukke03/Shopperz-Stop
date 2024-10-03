@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="oc.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+    <header class="sticky-header">
+        <h1>Shopperz Stop.</h1>
+    </header>
+
+    <div class="container">
+        <div class="order-badge">
+            <h1>🎉 Order Confirmed! 🎉</h1>
+        </div>
+
+        <button class="continue-shopping" onclick="goBack()" style="margin-bottom: 20px;">Continue Shopping</button>
+
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div id="orderSummary"></div>
+        </div>
+
+        <table id="orderTable">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="tracking-info">
+            <h2>Track Your Order</h2>
+            <p>Your order is being processed and will be shipped shortly.</p>
+            <p>Tracking ID: <strong>123456789</strong></p>
+        </div>
+
+        <section class="feedback-section">
+            <h2>We'd Love Your Feedback!</h2>
+            <textarea placeholder="Share your experience..." rows="4"></textarea>
+            <button type="submit">Submit Feedback</button>
+        </section>
+
+        <section class="subscription-prompt">
+            <h2>Subscribe for More Offers!</h2>
+            <input type="email" placeholder="Enter your email">
+            <button>Subscribe</button>
+        </section>
+
+        <section class="return-policy">
+            <h2>Return Policy</h2>
+            <p>Our return policy allows you to return products within 30 days of receipt.</p>
+        </section>
+
+        <button class="continue-shopping" onclick="goBack()" style="margin-bottom: 20px;">Continue Shopping</button>
+    </div>
+
+    <footer class="sticky-footer">
+        <p>&copy; 2024 Shopperz Stop. All rights reserved.</p>
+    </footer>
+
+    <script src="oc.js"></script> <!-- Link to your external JavaScript file -->
+</body>
+</html>

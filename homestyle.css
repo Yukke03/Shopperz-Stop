@@ -1,0 +1,277 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #041c35; /* Blue header */
+    color: white;
+    padding: 8px 16px; /* Slightly smaller padding */
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 10px; /* Reduced spacing between menu items */
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+h1, h2 {
+    margin: 8px 0; /* Reduced margin for headers */
+}
+
+main {
+    padding: 16px; /* Slightly reduced padding */
+}
+
+/* General section styles */
+section {
+    background-color: white;
+    border-radius: 6px; /* Slightly smaller corners */
+    padding: 12px; /* Smaller padding */
+    margin-bottom: 15px; /* Reduced margin */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+section:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Product container */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Fixed to 4 columns */
+    gap: 5px; /* Reduced gap */
+    padding: 5px; /* Add padding around product container */
+}
+
+/* Individual product box */
+.product {
+    background-color: #fff;
+    border: 1px solid #ddd; /* Light border for product boxes */
+    border-radius: 6px; /* Smaller rounded corners */
+    padding: 8px; /* Smaller padding */
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    height: 300px; /* Fixed height for uniformity */
+}
+
+
+.product:hover {
+    transform: translateY(-2px); /* Reduced lift effect */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    width: 100%;
+    height: 150px; /* Reduced height for images */
+    object-fit: cover;
+    border-radius: 4px; /* Smaller corner radius */
+}
+
+.product-title {
+    font-size: 14px; /* Slightly smaller title */
+    margin: 4px 0; /* Reduced margin */
+    font-weight: bold;
+    color: #007BFF;
+}
+
+.product-details {
+    font-size: 12px;
+    color: #555;
+    margin: 4px 0; /* Reduced margin */
+}
+
+/* Footer styles */
+footer {
+    background-color: #041c35;  /* Blue footer */
+    color: white;
+    text-align: center;
+    padding: 8px 0; /* Smaller padding */
+}
+
+/* Pagination styles */
+#pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0; /* Reduced margin */
+    padding: 8px; /* Smaller padding */
+}
+
+#pagination button {
+    background-color: #0a0d0f;
+    color: white;
+    border: none;
+    border-radius: 4px; /* Smaller rounded corners */
+    padding: 5px 12px; /* Smaller button padding */
+    margin: 0 4px; /* Reduced margin */
+    cursor: pointer;
+    font-size: 15px; /* Smaller font size */
+    transition: background-color 0.3s;
+}
+
+#pagination button:hover {
+    background-color: #0056b3;
+}
+
+#pagination span {
+    font-size: 40px; /* Smaller font size for pagination */
+    margin: 0 8px; /* Reduced margin */
+}
+
+/* View Products styles */
+#viewProducts label {
+    display: block;
+    margin-top: 8px; /* Reduced margin */
+    font-weight: bold;
+    color: #333;
+}
+
+#viewProducts select, 
+#viewProducts input[type="text"] {
+    width: 80%;
+    padding: 6px; /* Smaller padding */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Smaller corners */
+    margin-top: 4px; /* Reduced margin */
+    margin-bottom: 12px; /* Reduced margin */
+    font-size: 12px; /* Smaller font size */
+    transition: border-color 0.3s;
+}
+
+#viewProducts select:focus, 
+#viewProducts input[type="text"]:focus {
+    border-color: #000000;
+    outline: none;
+}
+
+#viewProducts .search-container {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#viewProducts .search-container select {
+    flex: 1;
+    margin-right: 8px; /* Reduced margin */
+}
+
+#viewProducts .search-container input[type="text"] {
+    flex: 2;
+}
+
+/* General styles for Add and Edit Product sections */
+.add-edit-section {
+    margin: 16px; /* Reduced margin */
+    padding: 16px; /* Smaller padding */
+    border: 1px solid #ddd;
+    border-radius: 6px; /* Smaller corners */
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.add-edit-section h2 {
+    color: #007bff;
+    font-size: 22px; /* Smaller font size */
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 8px; /* Reduced margin */
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 90%;
+    padding: 6px; /* Smaller padding */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Smaller corners */
+    margin-top: 4px; /* Reduced margin */
+    font-size: 12px; /* Smaller font size */
+    transition: border-color 0.3s;
+}
+
+input[type="file"] {
+    margin-top: 8px; /* Reduced margin */
+}
+
+button {
+    margin-top: 12px; /* Reduced margin */
+    padding: 8px 12px; /* Smaller padding */
+    border: none;
+    border-radius: 4px; /* Smaller corners */
+    background-color: #007bff;
+    color: white;
+    font-size: 14px; /* Smaller font size */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px; /* Optional: makes the button edges rounded */
+}
+
+.delete-button:hover {
+    background-color: darkred; /* Changes color on hover */
+}
+
+
+button:hover {
+    background-color: #092e57;
+}
+
+textarea {
+    resize: vertical;
+    height: 60px; /* Smaller default height */
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    section {
+        margin: 8px; /* Less margin on small screens */
+        padding: 12px; /* Less padding on small screens */
+    }
+
+    button {
+        width: 100%; /* Full width for buttons on small screens */
+    }
+
+    .product-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 1-2 columns on small screens */
+    }
+
+    .product {
+        height: auto; /* Allow height to adjust on small screens */
+    }
+}

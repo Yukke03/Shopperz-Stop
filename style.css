@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: url('Images/Bg Image.png') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    width: 80%; /* Adjust width based on screen */
+    max-width: 650px;
+    padding: 2rem;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    animation: slideIn 1s ease-out forwards;
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(100vh); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+form {
+    margin: 0 2rem;
+}
+
+.form-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    color: hsl(327, 90%, 28%);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.input-group {
+    padding: 1% 0;
+    position: relative;
+}
+
+.input-group i {
+    position: absolute;
+    color: black;
+    animation: bounceIn 0.8s ease forwards;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+input {
+    color: inherit;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #757575;
+    padding-left: 1.5rem;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    background-color: transparent;
+    outline: none;
+    border-bottom: 2px solid hsl(327, 90%, 28%);
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+label {
+    color: #757575;
+    position: relative;
+    left: 1.2em;
+    top: -1.3em;
+    cursor: auto;
+    transition: 0.3s ease all;
+}
+
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label {
+    top: -3em;
+    color: hsl(327, 90%, 28%);
+    font-size: 15px;
+}
+
+.recover {
+    text-align: right;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.recover a {
+    text-decoration: none;
+    color: rgb(125, 125, 235);
+    transition: color 0.3s;
+}
+
+.recover a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+button {
+    font-size: 1.1rem;
+    padding: 12px 0;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    width: 100%;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.5s;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    transform: translateY(-5px);
+}
+
+.or {
+    font-size: 1.2rem;
+    margin-top: 0.8rem;
+    text-align: center;
+    padding: 10px;
+}
+
+.icons {
+    text-align: center;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    0% { transform: translateY(100px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.icons i {
+    color: rgb(125, 125, 235);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 2px solid #dfe9f5;
+    margin: 0 15px;
+    transition: background 0.3s, font-size 0.3s, border-color 0.3s;
+}
+
+.icons i:hover {
+    background: #07001f;
+    font-size: 1.6rem;
+    border: 2px solid rgb(125, 125, 235);
+}
+
+.links {
+    display: inline;
+    justify-content: center;
+    margin-top: 1.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #555;
+}
+
+.links p {
+    margin-right: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+#signUpButton {
+    display: inline;
+    color: white;
+    background-color: #0044cc;
+    width: 100%;
+    border: 2px solid #0044cc;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+#signUpButton:hover {
+    background-color: #002a80;
+    border-color: #002a80;
+    transform: translateY(-3px);
+}
+
+#signUpButton, #signInButton {
+    color: rgb(255, 255, 255);
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: text-decoration 0.3s, color 0.3s;
+}
+
+#signUpButton:hover, #signInButton:hover {
+    text-decoration: underline;
+    color: rgb(58, 58, 70);
+}
+
+.messageDiv {
+    background-color: hsl(327, 90%, 28%);
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    opacity: 0;
+    animation: fadeOut 7s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Google Button Styles */
+.google-btn {
+    display: inline-block; /* Keeps the button aligned properly */
+    width: 50%; /* Reduced width for a smaller container */
+    font-size: 0.8rem; /* Adjust font size */
+    padding: 8px 15px; /* Reduced padding for a smaller button */
+    color: rgb(255, 255, 255);
+    border: 2px solid #3367D6; /* Define border */
+    background-color: #4285F4; /* Blue background */
+    border-radius: 25px; /* Rounded corners */
+    font-weight: bold; /* Bold font */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transition effects */
+}
+
+.google-btn i {
+    color: rgb(255, 255, 255);
+    margin-right: 8px; /* Reduced margin between icon and text */
+    font-size: 1rem; /* Icon size */
+    transition: transform 0.3s ease; /* Icon transition */
+}
+
+.google-btn:hover {
+    background: #357AE8; /* Darker shade on hover */
+    transform: translateY(-3px); /* Lift effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Added shadow */
+}
+
+.google-btn:hover i {
+    transform: scale(1.1); /* Slight enlargement of the icon on hover */
+}
+
+.google-btn:active {
+    background: #2A52C0; /* Darker shade when pressed */
+    transform: translateY(0); /* Reset the transform */
+    box-shadow: none; /* Remove shadow when pressed */
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+    body {
+        height: auto; /* Allow the content to scroll on smaller screens */
+        padding: 10px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .form-title {
+        font-size: 1.8rem;
+    }
+
+    .input-group {
+        padding: 1rem 0;
+    }
+
+    input {
+        font-size: 14px;
+        padding-left: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .icons i {
+        font-size: 1.2rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    #signUpButton {
+        font-size: 0.9rem;
+    }
+
+    .google-btn {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .google-btn i {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-title {
+        font-size: 1.5rem;
+    }
+
+    .google-btn {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .google-btn i {
+        font-size: 1.1rem;
+    }
+}

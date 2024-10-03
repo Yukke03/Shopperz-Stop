@@ -1,0 +1,231 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #002750;
+    color: white;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Space between the two sections */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 10px;
+    padding: 3px;
+}
+
+.header-container h1 {
+    color: white;
+}
+
+nav {
+    margin-left: auto; /* Pushes the nav to the right */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+}
+
+nav ul li {
+    margin-left: 20px; /* Spacing between navigation items */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+.container {
+    width: 100%;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+    color: #002750; /* Header color for headings */
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+textarea {
+    height: 80px;
+}
+
+.delivery-options label,
+.payment-options label {
+    display: block;
+    margin: 10px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td img {
+    width: 50px;
+    height: 50px;
+}
+
+#total-price {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.voucher-section {
+    margin: 20px 0;
+}
+
+#voucher-code {
+    width: calc(100% - 120px);
+    display: inline-block;
+    padding: 10px;
+}
+
+#apply-voucher {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#apply-voucher:hover {
+    background-color: #0056b3;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#back-to-cart {
+    background-color: #007bff;
+    margin-left: 10px;
+}
+
+#back-to-cart:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.footer-container p {
+    margin-left: 20px;
+}
+
+.footer-container ul {
+    list-style: none;
+    display: flex;
+    margin-right: 20px;
+}
+
+.footer-container ul li {
+    margin-left: 20px;
+}
+
+.footer-container a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-container a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    table th, table td {
+        font-size: 0.9em;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-container p {
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    header {
+      background: #060881;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 2em;
+      letter-spacing: 1px;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    table {
+      width: 1200px;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    th {
+      background: #f2f2f2;
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    .quantity-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .quantity-buttons button {
+      margin: 0 5px;
+      background-color: #060881;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .quantity-buttons button:hover {
+      background-color: #4a4a4a;
+      transform: scale(1.05);
+    }
+
+    #cart-summary {
+      margin-top: 20px;
+      text-align: right;
+      font-size: 1.2em;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-around; /* Aligns buttons at both ends */
+      margin-top: 20px;
+    }
+
+    #checkout-button {
+      background-color: #158618; /* Green */
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s, transform 0.2s;
+      flex-grow: 1; /* Makes the button take available space */
+      margin-right: 20px; /* Space between buttons */
+    }
+
+    #checkout-button:hover {
+      background-color: #45a049; /* Darker green on hover */
+      transform: scale(1.05);
+    }
+
+    #clear-cart-button {
+      background-color: #9c0d0d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s, transform 0.2s;
+      flex-grow: 1; /* Makes the button take available space */
+      margin-left: 20px; /* Space between buttons */
+    }
+
+    #clear-cart-button:hover {
+      background-color: #ff4040;
+      transform: scale(1.05);
+    }
+
+    #go-back {
+      margin-top: 40px;
+      text-align: justify; /* Center the button */
+    }
+
+    #go-back button {
+      width:20%;
+      background-color: #0d1586;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    #go-back button:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 50%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>Your Cart</h2>
+  </header>
+
+  <main>
+    <section id="cart-items">
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items-body">
+          <!-- Cart items will be dynamically loaded here -->
+        </tbody>
+      </table>
+    </section>
+
+    <div id="cart-summary">
+      <p>Total: $<span id="total-price">0.00</span></p>
+      <div class="button-container">
+        <button id="checkout-button">Proceed to Checkout</button>
+        <button id="clear-cart-button">Clear Cart</button>
+        
+      </div>
+    </div>
+
+    <div id="go-back">
+      <button onclick="goBack()">Continue Shopping</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Shopperz Stop. Website</p>
+  </footer>
+</body>
+</html>
+
+  <script>
+    const cartItemsBody = document.getElementById('cart-items-body');
+    const totalPriceElement = document.getElementById('total-price');
+    const checkoutButton = document.getElementById('checkout-button');
+    const clearCartButton = document.getElementById('clear-cart-button');
+
+    const API_KEY = "AIzaSyA0j1H8_v-ZaVa25wZkDuOf_oEgz3xhb_o";
+    const PROJECT_ID = "e-commerce-website-bf09a";
+    const COLLECTION_ID = "carts";
+    const PRODUCTS_COLLECTION_ID = "products";
+
+    let totalAmount = 0;
+
+    async function fetchCartItems() {
+      const userId = localStorage.getItem('loggedInUserId');
+      const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/${COLLECTION_ID}?key=${API_KEY}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.documents) {
+          const cartData = data.documents
+            .filter(doc => doc.name.includes(userId))
+            .map(doc => ({
+              id: doc.name.split('/').pop(),
+              name: doc.fields.name.stringValue,
+              price: parseFloat(doc.fields.price.doubleValue),
+              quantity: parseInt(doc.fields.quantity.integerValue),
+              productId: doc.fields.productId.stringValue
+            }));
+
+          if (cartData.length > 0) {
+            displayCartItems(cartData);
+          } else {
+            cartItemsBody.innerHTML = '<tr><td colspan="4">Your cart is empty.</td></tr>';
+          }
+        } else {
+          cartItemsBody.innerHTML = '<tr><td colspan="4">Your cart is empty.</td></tr>';
+        }
+      } catch (error) {
+        console.error('Error fetching cart items:', error);
+      }
+    }
+
+    function displayCartItems(items) {
+      cartItemsBody.innerHTML = '';  
+      totalAmount = 0;
+
+      items.forEach((item) => {
+        const cartRow = document.createElement('tr');
+        cartRow.innerHTML = `
+          <td>${item.name}</td>
+          <td>$${item.price.toFixed(2)}</td>
+          <td class="quantity-buttons">
+            <button class="decrease" data-id="${item.id}" data-product-id="${item.productId}">-</button>
+            <span class="quantity">${item.quantity}</span>
+            <button class="increase" data-id="${item.id}" data-product-id="${item.productId}">+</button>
+          </td>
+          <td>$<span class="subtotal">${(item.price * item.quantity).toFixed(2)}</span></td>
+        `;
+        cartItemsBody.appendChild(cartRow);
+        totalAmount += item.price * item.quantity;
+      });
+
+      totalPriceElement.textContent = totalAmount.toFixed(2);
+      setupCartItemListeners();
+    }
+
+    function setupCartItemListeners() {
+      const increaseButtons = document.querySelectorAll('.increase');
+      const decreaseButtons = document.querySelectorAll('.decrease');
+
+      increaseButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+          const productId = event.target.getAttribute('data-product-id');
+          const cartId = event.target.getAttribute('data-id');
+          updateQuantity(cartId, productId, 'increase');
+        });
+      });
+
+      decreaseButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+          const productId = event.target.getAttribute('data-product-id');
+          const cartId = event.target.getAttribute('data-id');
+          updateQuantity(cartId, productId, 'decrease');
+        });
+      });
+    }
+
+    async function updateQuantity(cartId, productId, action) {
+      const userId = localStorage.getItem('loggedInUserId');
+      const cartUrl = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/${COLLECTION_ID}/${cartId}?key=${API_KEY}`;
+      const productUrl = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/${PRODUCTS_COLLECTION_ID}/${productId}?key=${API_KEY}`;
+
+      try {
+        const productResponse = await fetch(productUrl);
+        const productData = await productResponse.json();
+        const maxQuantity = parseInt(productData.fields.quantity.integerValue);
+
+        const cartResponse = await fetch(cartUrl);
+        const cartData = await cartResponse.json();
+
+        if (cartData.fields) {
+          let currentQuantity = parseInt(cartData.fields.quantity.integerValue);
+
+          if (action === 'increase' && currentQuantity < maxQuantity) {
+            currentQuantity += 1;
+          } else if (action === 'decrease') {
+            currentQuantity -= 1;
+          }
+
+          if (currentQuantity === 0) {
+            await removeItemFromCart(cartId);
+          } else {
+            const updatedData = {
+              fields: {
+                name: { stringValue: cartData.fields.name.stringValue },
+                price: { doubleValue: parseFloat(cartData.fields.price.doubleValue) },
+                quantity: { integerValue: currentQuantity },
+                description: { stringValue: cartData.fields.description.stringValue },
+                imageUrl: { stringValue: cartData.fields.imageUrl.stringValue },
+                productId: { stringValue: cartData.fields.productId.stringValue },
+                userId: { stringValue: cartData.fields.userId.stringValue }
+              }
+            };
+
+            await fetch(cartUrl, {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(updatedData)
+            });
+          }
+        }
+
+        fetchCartItems();
+      } catch (error) {
+        console.error('Error updating quantity:', error);
+      }
+    }
+
+    async function removeItemFromCart(cartId) {
+      const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/${COLLECTION_ID}/${cartId}?key=${API_KEY}`;
+
+      try {
+        await fetch(url, {
+          method: 'DELETE'
+        });
+
+        fetchCartItems();
+      } catch (error) {
+        console.error('Error removing item from cart:', error);
+      }
+    }
+
+    clearCartButton.addEventListener('click', async () => {
+      const userId = localStorage.getItem('loggedInUserId');
+      const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/${COLLECTION_ID}?key=${API_KEY}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.documents) {
+          const userCartItems = data.documents.filter(doc => doc.name.includes(userId));
+
+          for (let cartItem of userCartItems) {
+            const cartId = cartItem.name.split('/').pop();
+            await removeItemFromCart(cartId);
+          }
+
+          totalAmount = 0;
+          totalPriceElement.textContent = totalAmount.toFixed(2);
+        }
+      } catch (error) {
+        console.error('Error clearing cart:', error);
+      }
+    });
+
+    function goBack() {
+      window.location.href = 'Customerhomepage.html';
+    }
+
+    checkoutButton.addEventListener('click', () => {
+    // Check if the total amount is greater than 0 before proceeding
+    if (totalAmount > 0) {
+        // If the total amount is greater than 0, redirect to the checkout page
+        window.location.href = 'Productcheckout.html'; // Redirect to checkout page
+    } else {
+        // Display a message to the user if the total amount is 0 or no items in the cart
+        alert('Your cart is empty! Please add some products before proceeding to checkout.');
+    }
+});
+
+    window.onload = fetchCartItems;
+</script>
+</body>
+</html>
